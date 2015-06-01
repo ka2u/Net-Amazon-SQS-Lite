@@ -137,10 +137,11 @@ sub list_queues {
     $param->{Expires} = $expire if $expire;
     my $req = $self->make_request($param, $param);
     my $res = $self->ua->request($req);
+    my $decoded = $self->xml_decoder->XMLin($res->content);
     if ($res->is_success) {
-        my $decoded = $self->xml_decoder->XMLin($res->content);
         return $decoded;
     } else {
+        Carp::croak $decoded;
     }
 }
 
