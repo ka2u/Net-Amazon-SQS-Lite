@@ -151,6 +151,18 @@ sub list_queues {
     $self->_request($req_param);
 }
 
+sub create_queue {
+    my ($self, $param) = @_;
+
+    Carp::croak "QueueName is required." unless $param->{QueueName};
+    my $req_param = {
+        'Action' => 'CreateQueue',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 
 1;
 __END__
