@@ -163,6 +163,18 @@ sub create_queue {
     $self->_request($req_param);
 }
 
+sub delete_queue {
+    my ($self, $param) = @_;
+
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    my $req_param = {
+        'Action' => 'DeleteQueue',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 
 1;
 __END__
