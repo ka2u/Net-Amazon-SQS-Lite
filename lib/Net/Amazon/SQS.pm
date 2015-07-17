@@ -126,23 +126,29 @@ sub make_request {
     return $req;
 }
 
-sub list_queues {
-    my ($self, $prefix, $expire) = @_;
-
-    my $param = {
-        'Action' => 'ListQueues',
-        'Version' => $self->version,
-    };
-    $param->{QueueNamePrefix} = $prefix if $prefix;
-    $param->{Expires} = $expire if $expire;
-    my $req = $self->make_request($param, $param);
+sub _request {
+    my ($self, $req_param) = @_;
+    my $req = $self->make_request($req_param);
     my $res = $self->ua->request($req);
+    use Data::Dumper;
+    warn Dumper $res;
     my $decoded = $self->xml_decoder->XMLin($res->content);
     if ($res->is_success) {
         return $decoded;
     } else {
         Carp::croak $decoded;
     }
+}
+
+sub list_queues {
+    my ($self, $param) = @_;
+
+    my $req_param = {
+        'Action' => 'ListQueues',
+        'Version' => $self->version,
+    };
+    $req_param->{QueueNamePrefix} = $param->{QueueNamePrefix} if $param->{QueueNamePrefix};
+    $self->_request($req_param);
 }
 
 
@@ -172,7 +178,7 @@ it under the same terms as Perl itself.
 
 =head1 AUTHOR
 
-Kazuhiro Shibuya E<lt>shibuya@fout.jpE<gt>
+Kazuhiro Shibuya E<lt>stevenlabs@gmail.comE<gt>
 
 =cut
 
