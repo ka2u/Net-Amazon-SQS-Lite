@@ -175,6 +175,18 @@ sub delete_queue {
     $self->_request($req_param);
 }
 
+sub send_message {
+    my ($self, $param) = @_;
+
+    Carp::croak "MessageBody is required." unless $param->{MessageBody};
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    my $req_param = {
+        'Action' => 'SendMessage',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
 
 1;
 __END__
