@@ -175,6 +175,18 @@ sub delete_queue {
     $self->_request($req_param);
 }
 
+sub receive_message {
+    my ($self, $param) = @_;
+
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    my $req_param = {
+        'Action' => 'ReceiveMessage',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 sub send_message {
     my ($self, $param) = @_;
 
