@@ -140,6 +140,27 @@ sub _request {
     }
 }
 
+sub add_permission {
+    my ($self, $param) = @_;
+
+    my $account_id_valid = 0;
+    my $action_name_valid = 0;
+    for my $key (keys %{$param}) {
+        $account_id_valid = 1 if $key =~ /AWSAccountId\.\d/;
+        $action_name_valid = 1 if $key =~ /ActionName\.\d/;
+    }
+    Carp::croak "AWSAccountId.[num] is required." unless $account_id_valid;
+    Carp::croak "ActionName.[num] is required." unless $action_name_valid;
+    Carp::croak "Label is required." unless $param->{Label};
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    my $req_param = {
+        'Action' => 'AddPermission',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 sub list_queues {
     my ($self, $param) = @_;
 
