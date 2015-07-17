@@ -161,6 +161,20 @@ sub add_permission {
     $self->_request($req_param);
 }
 
+sub change_message_visibility {
+    my ($self, $param) = @_;
+
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    Carp::croak "ReceiptHandle is required." unless $param->{ReceiptHandle};
+    Carp::croak "VisibilityTimeout is required." unless $param->{VisibilityTimeout};
+    my $req_param = {
+        'Action' => 'ChangeMessageVisibility',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 sub list_queues {
     my ($self, $param) = @_;
 
