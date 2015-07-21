@@ -235,6 +235,7 @@ sub delete_message_batch {
     for my $key (keys %{$param}) {
         $batch_request_entry = 1 if $key =~ /DeleteaMessageBatchRequestEntry\.\d/;
     }
+    Carp::croak "DeleteMessageBatchRequestEntry.[num] is required." unless $batch_request_entry;
     Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
     my $req_param = {
         'Action' => 'DeleteMessageBatch',
