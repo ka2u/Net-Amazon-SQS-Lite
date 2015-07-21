@@ -228,6 +228,22 @@ sub delete_message {
     $self->_request($req_param);
 }
 
+sub delete_message_batch {
+    my ($self, $param) = @_;
+
+    my $batch_request_entry = 0;
+    for my $key (keys %{$param}) {
+        $batch_request_entry = 1 if $key =~ /DeleteaMessageBatchRequestEntry\.\d/;
+    }
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    my $req_param = {
+        'Action' => 'DeleteMessageBatch',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 sub delete_queue {
     my ($self, $param) = @_;
 
