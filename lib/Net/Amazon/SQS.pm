@@ -175,6 +175,23 @@ sub change_message_visibility {
     $self->_request($req_param);
 }
 
+sub change_message_visibility_batch {
+    my ($self, $param) = @_;
+
+    my $batch_request_entry = 0;
+    for my $key (keys %{$param}) {
+        $batch_request_entry = 1 if $key =~ /ChangeMessageVisibilityBatchRequestEntry\.\d/;
+    }
+    Carp::croak "ChangeMessageVisibilityBatchRequestEntry.[num] is required." unless $batch_request_entry;
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    my $req_param = {
+        'Action' => 'ChangeMessageVisibilityBatch',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 sub list_queues {
     my ($self, $param) = @_;
 
