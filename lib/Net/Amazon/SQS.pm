@@ -274,6 +274,18 @@ sub get_queue_attributes {
     $self->_request($req_param);
 }
 
+sub get_queue_url {
+    my ($self, $param) = @_;
+
+    Carp::croak "QueueName is required." unless $param->{QueueName};
+    my $req_param = {
+        'Action' => 'GetQueueUrl',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 sub receive_message {
     my ($self, $param) = @_;
 
