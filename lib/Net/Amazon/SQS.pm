@@ -256,6 +256,23 @@ sub delete_queue {
     $self->_request($req_param);
 }
 
+sub get_queue_attributes {
+    my ($self, $param) = @_;
+
+    my $attributes = 0;
+    for my $key (keys %{$param}) {
+        $attributes = 1 if $key =~ /AttributeName\.\d/;
+    }
+    Carp::croak "AttributeName.[num] is required." unless $attributes;
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    my $req_param = {
+        'Action' => 'GetQueueAttributes',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 sub receive_message {
     my ($self, $param) = @_;
 
