@@ -328,7 +328,7 @@ sub remove_permission {
     Carp::croak "Label is required." unless $param->{Label};
     Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
     my $req_param = {
-        'Action' => 'ReceiveMessage',
+        'Action' => 'RemovePermission',
         'Version' => $self->version,
         %{$param}
     };
