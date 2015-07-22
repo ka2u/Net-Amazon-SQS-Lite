@@ -1,10 +1,10 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Amazon SQS client",
    "author" : [
-      "Kazuhiro Shibuya <shibuya@fout.jp>"
+      "Kazuhiro Shibuya <stevenlabs@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v2.4.1, CPAN::Meta::Converter version 2.150001",
+   "generated_by" : "Minilla/v2.5.0, CPAN::Meta::Converter version 2.150001",
    "license" : [
       "perl_5"
    ],
@@ -42,6 +42,12 @@
       },
       "runtime" : {
          "requires" : {
+            "Furl" : "3.07",
+            "HTTP::Message" : "6.10",
+            "Moo" : "2.000001",
+            "Pod::Markdown" : "2.002",
+            "WebService::Amazon::Signature" : "0.002",
+            "XML::Simple" : "2.20",
             "perl" : "5.008001"
          }
       },
@@ -52,6 +58,20 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/ka2u/Net-Amazon-SQS/issues"
+      },
+      "homepage" : "https://github.com/ka2u/Net-Amazon-SQS",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/ka2u/Net-Amazon-SQS.git",
+         "web" : "https://github.com/ka2u/Net-Amazon-SQS"
+      }
+   },
    "version" : "0.01",
-   "x_authority" : "cpan:SHIBUYA"
+   "x_authority" : "cpan:SHIBUYA",
+   "x_contributors" : [
+      "Kazuhiro Shibuya <shibuya@fout.jp>"
+   ]
 }
