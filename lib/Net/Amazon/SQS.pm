@@ -365,6 +365,23 @@ sub send_message_batch {
     $self->_request($req_param);
 }
 
+sub set_queue_attributes {
+    my ($self, $param) = @_;
+
+    my $attributes = 0;
+    for my $key (keys %{$param}) {
+        $attributes = 1 if $key =~ /Attribute\./;
+    }
+    Carp::croak "Attribute.[entry] is required." unless $attributes;
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    my $req_param = {
+        'Action' => 'SetQueueAttributes',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 1;
 __END__
 
