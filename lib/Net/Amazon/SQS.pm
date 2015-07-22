@@ -348,6 +348,23 @@ sub send_message {
     $self->_request($req_param);
 }
 
+sub send_message_batch {
+    my ($self, $param) = @_;
+
+    my $request_entry = 0;
+    for my $key (keys %{$param}) {
+        $request_entry = 1 if $key =~ /SendMessageBatchRequestEntry\.\d/;
+    }
+    Carp::croak "SendMessageBatchRequestEntry.[num] is required." unless $request_entry;
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    my $req_param = {
+        'Action' => 'SendMessageBatch',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 1;
 __END__
 
