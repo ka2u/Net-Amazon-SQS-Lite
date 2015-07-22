@@ -286,6 +286,18 @@ sub get_queue_url {
     $self->_request($req_param);
 }
 
+sub list_dead_letter_source_queues {
+    my ($self, $param) = @_;
+
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    my $req_param = {
+        'Action' => 'ListDeadLetterSourceQueues',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 sub receive_message {
     my ($self, $param) = @_;
 
