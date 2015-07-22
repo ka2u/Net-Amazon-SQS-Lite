@@ -130,8 +130,6 @@ sub _request {
     my ($self, $req_param) = @_;
     my $req = $self->make_request($req_param);
     my $res = $self->ua->request($req);
-    use Data::Dumper;
-    warn Dumper $res;
     my $decoded = $self->xml_decoder->XMLin($res->content);
     if ($res->is_success) {
         return $decoded;
