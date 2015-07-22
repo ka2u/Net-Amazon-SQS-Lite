@@ -2,6 +2,10 @@ Revision history for Perl extension Net-Amazon-SQS
 
 {{$NEXT}}
 
+0.02 2015-07-22T09:45:02Z
+
+    - trial release
+
 0.01 2015-07-22T09:39:41Z
 
     - original version
