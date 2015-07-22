@@ -322,6 +322,19 @@ sub receive_message {
     $self->_request($req_param);
 }
 
+sub remove_permission {
+    my ($self, $param) = @_;
+
+    Carp::croak "Label is required." unless $param->{Label};
+    Carp::croak "QueueUrl is required." unless $param->{QueueUrl};
+    my $req_param = {
+        'Action' => 'ReceiveMessage',
+        'Version' => $self->version,
+        %{$param}
+    };
+    $self->_request($req_param);
+}
+
 sub send_message {
     my ($self, $param) = @_;
 
