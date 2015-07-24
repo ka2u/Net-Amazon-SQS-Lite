@@ -2,6 +2,10 @@ Revision history for Perl extension Net-Amazon-SQS-Lite
 
 {{$NEXT}}
 
+0.03 2015-07-24T02:52:27Z
+
+    - Change the namespace. the namespace is already taken by someone else.
+
 0.02 2015-07-22T09:45:02Z
 
     - trial release
