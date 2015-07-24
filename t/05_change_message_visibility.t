@@ -1,11 +1,11 @@
 use strict;
-use Net::Amazon::SQS;
+use Net::Amazon::SQS::Lite;
 use Test::More 0.98;
 use Time::Piece;
 use Time::Seconds;
 use URI;
 
-my $sqs = Net::Amazon::SQS->new(
+my $sqs = Net::Amazon::SQS::Lite->new(
     access_key => "XXXXX",
     secret_key => "YYYYY",
     region => "ap-northeast-1",

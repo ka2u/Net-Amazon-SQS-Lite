@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Net-Amazon-SQS",
+   "name" : "Net-Amazon-SQS-Lite",
    "no_index" : {
       "directory" : [
          "t",
@@ -60,18 +60,18 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/ka2u/Net-Amazon-SQS/issues"
+         "web" : "https://github.com/ka2u/Net-Amazon-SQS-Lite/issues"
       },
-      "homepage" : "https://github.com/ka2u/Net-Amazon-SQS",
+      "homepage" : "https://github.com/ka2u/Net-Amazon-SQS-Lite",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/ka2u/Net-Amazon-SQS.git",
-         "web" : "https://github.com/ka2u/Net-Amazon-SQS"
+         "url" : "git://github.com/ka2u/Net-Amazon-SQS-Lite.git",
+         "web" : "https://github.com/ka2u/Net-Amazon-SQS-Lite"
       }
    },
    "version" : "0.02",
    "x_authority" : "cpan:SHIBUYA",
    "x_contributors" : [
-      "Kazuhiro Shibuya <shibuya@fout.jp>"
+      "Kazuhiro Shibuya <stevenlabs@gmail.com>"
    ]
 }

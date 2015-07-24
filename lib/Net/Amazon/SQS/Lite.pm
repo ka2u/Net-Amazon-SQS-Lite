@@ -1,4 +1,4 @@
-package Net::Amazon::SQS;
+package Net::Amazon::SQS::Lite;
 use 5.008001;
 use strict;
 use warnings;
@@ -95,7 +95,7 @@ sub _build_ua {
     my ($self) = @_;
 
     my $ua = Furl->new(
-        agent => 'Net::Amazon::SQS v0.01',
+        agent => 'Net::Amazon::SQS::Lite v0.01',
         timeout => $self->connection_timeout,
         ssl_opts => {
             SSL_ca_path => $self->ca_path,
@@ -387,13 +387,13 @@ __END__
 
 =head1 NAME
 
-Net::Amazon::SQS - Amazon SQS client
+Net::Amazon::SQS::Lite - Amazon SQS client
 
 =head1 SYNOPSIS
 
-    use Net::Amazon::SQS;
+    use Net::Amazon::SQS::Lite;
 
-    my $sqs = Net::Amazon::SQS->new(
+    my $sqs = Net::Amazon::SQS::Lite->new(
         access_key => "XXXXX",
         secret_key => "YYYYY",
         region => "ap-northeast-1",
@@ -402,7 +402,7 @@ Net::Amazon::SQS - Amazon SQS client
 
 =head1 DESCRIPTION
 
-Net::Amazon::SQS is simple Amazon SQS simple client.
+Net::Amazon::SQS::Lite is simple Amazon SQS simple client.
 
 THIS IS A DEVELOPMENT RELEASE. API MAY CHANGE WITHOUT NOTICE.
 
